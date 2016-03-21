@@ -1,0 +1,23 @@
+  <div class="list">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">First Name</span>
+      <input type="text" ng-model="newUser.firstName" placeholder="John">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Last Name</span>
+      <input type="text" ng-model="newUser.lastName" placeholder="Suhr">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Email</span>
+      <input type="text" ng-model="newUser.email" placeholder="john@suhr.com">
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Password</span>
+      <input type="password" ng-model="newUser.password" placeholder="atleast 8 digits">
+    </label>
+  </div>
+  <button class="button button-positive" ui-sref="signIn" ng-click="submit(newUser)">
+    SignUp
+  </button>
+
