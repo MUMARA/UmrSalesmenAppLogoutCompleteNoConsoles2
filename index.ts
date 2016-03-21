@@ -54,13 +54,14 @@ app.post("/signUp", function (req, res) {
         } else {
             //   console.log("Successfully created user account with uid:", userData.uid);
             /*include data in schema  */
-            let newuser = new userModel({
+          let newuser = new userModel({
                 fname: req.body.firstName,
                 lname: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password,
                 uid: userData.uid
             });
+           
             newuser.save(function (err, data) {
                 if (err) {
                     console.log("error Recived from sign up", err);
@@ -73,8 +74,9 @@ app.post("/signUp", function (req, res) {
 
             })
 
+            var f =newuser
         }
-    })
+   f; })
 });
 app.post("/signIn", function (req, res) {
 
@@ -117,9 +119,15 @@ app.listen(3000, function () {
 /* company schema*/
 let Schema = mongoose.Schema;
 let companySchema = Schema({
+    fname: String,
+    lname: String,
+    email: {type: String, unique: true, index: true},
+    password: String,
+    
     companyName: String,
     companyAddress: String,
-    companyPhone: Number
+    companyPhone: Number,
+
 });
 /* company schema*/
 
@@ -129,14 +137,19 @@ var company = mongoose.model('company', companySchema);
 app.post("/registerCompany", function (req, res) {
     console.log(req.body);
 
-   
+
     var adminData = new company({
+     /*   fname: newuser.fname,
+        lname: newuser.lname,
+        email: newuser.email,
+        password: newuser.password,*/
+        
         companyName: req.body.companyName,
         companyAddress: req.body.companyAddress,
         companyPhone: req.body.companyPhone
     });
 
-    adminData.save(function (err,adminSave) {
+    adminData.save(function (err, adminSave) {
         {
             if (err) {
                 console.log("error Recived from adminData", err);

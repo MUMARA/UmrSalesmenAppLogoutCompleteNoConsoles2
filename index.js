@@ -61,7 +61,9 @@ app.post("/signUp", function (req, res) {
                     res.json({ success: true, "msg": "data Send Successfully", data: data });
                 }
             });
+            var f = newuser;
         }
+        f;
     });
 });
 app.post("/signIn", function (req, res) {
@@ -99,6 +101,10 @@ app.listen(3000, function () {
 /* company schema*/
 var Schema = mongoose.Schema;
 var companySchema = Schema({
+    fname: String,
+    lname: String,
+    email: { type: String, unique: true, index: true },
+    password: String,
     companyName: String,
     companyAddress: String,
     companyPhone: Number
@@ -109,6 +115,10 @@ var company = mongoose.model('company', companySchema);
 app.post("/registerCompany", function (req, res) {
     console.log(req.body);
     var adminData = new company({
+        /*   fname: newuser.fname,
+           lname: newuser.lname,
+           email: newuser.email,
+           password: newuser.password,*/
         companyName: req.body.companyName,
         companyAddress: req.body.companyAddress,
         companyPhone: req.body.companyPhone

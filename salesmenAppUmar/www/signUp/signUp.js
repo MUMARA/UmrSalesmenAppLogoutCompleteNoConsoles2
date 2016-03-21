@@ -5,7 +5,7 @@ angular.module('starter')
 
     $scope.submit = function () {
 
-      $http.post("/signup", $scope.newUser).then(function (response) {
+      $http.post("/signup", $rootScope.newUser).then(function (response) {
 
       //  $scope.displaySignup = response.data;
         //console.log("only response is " , response , " & response.data is " , response.data);
